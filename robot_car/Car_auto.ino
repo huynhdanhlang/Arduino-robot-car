@@ -7,13 +7,12 @@
 #define SW_CLP 11
 #define NEAR_SENSOR 2
 int sensor=0; 
-
 #define TRIG 13
 #define  ECHO 12
 Servo myservo;
-//int servoLeft = 40; //angle of microservo rotation to scan on left
+//int servoLeft = 160; //angle of microservo rotation to scan on left
 //int servoForward = 90;
-//int servoRight = 130; //angle of microservo rotation to scan on right
+//int servoRight = 20; //angle of microservo rotation to scan on right
 int a=0;
 int enb = 3;
 int in3 = 6; 
@@ -22,7 +21,6 @@ const int loa=2;
 int goc;
 unsigned long xung;
 int distance, khoangcach,kc_trai,kc_phai;
-
 //int czas, dist1, dist2, dist3;
 
 void do_khoang_cach()
@@ -35,8 +33,6 @@ void do_khoang_cach()
   if(distance <= 0) {khoangcach = 0;}
   else {khoangcach = distance;}
 }
-
-
 
 void setup() {
   // servo pin definition
@@ -56,50 +52,103 @@ void setup() {
   pinMode(in4, OUTPUT);
 
   lookForward(); 
+  pinMode(line_1,INPUT);
+  pinMode(line_2,INPUT);
+  pinMode(line_3,INPUT);
+  pinMode(line_4,INPUT);
+  pinMode(line_5,INPUT);
+  pinMode(SW_CLP,INPUT);
+  pinMode(5,INPUT);
   Serial.begin(9600);
 }
 
 
 
 void loop() {
+  int btnState=digitalRead(5);
+  delay(10);
+  if(btnState==0)
+  {
+    doLine();
+  }
+  else if(btnState==1)
+  {
+    modeAuto();
+  }
   
-  modeAuto();//Che do tu lay
-
-
 }
 
+
+//Do line va dung lai khi gap vat can
 void doLine(){
+  do_khoang_cach();
   moveForward();
-myservo.write(90);
+  myservo.write(90);
+  if(khoangcach<30){
+    moveStop();
+  }
+  else if(khoangcach>=30){
+  moveForward();
+  }
 while((digitalRead(line_2)==0)&&(digitalRead(line_1)==1)&&(digitalRead(line_4)==1)&&(digitalRead(line_5)==1)) // lệch phải một ít
-  {
+  {  do_khoang_cach();
     myservo.write(150);//re trai
+  if(khoangcach<30){
+    moveStop();
+  }
+  else if(khoangcach>=30){
+  moveForward();
+  }
   }
 while((digitalRead(line_4)==0)&&(digitalRead(line_5)==1)&&(digitalRead(line_1)==1)&&(digitalRead(line_2)==1)) // lệch trái một ít
- {
+ {  do_khoang_cach();
    myservo.write(30); // rẽ phải
+  if(khoangcach<30){
+    moveStop();
+  }
+  else if(khoangcach>=30){
+  moveForward();
+  }
  }
 while((digitalRead(line_1)==0)&&(digitalRead(line_4)==1)&&(digitalRead(line_5)==1)) // lệch phải nhiều
-  {
+  {  do_khoang_cach();
     sensor=1;
     while(sensor)
     {
     myservo.write(160); // rẽ trái
+  if(khoangcach<30){
+    moveStop();
+  }
+  else if(khoangcach>=30){
+  moveForward();
+  }
     if(digitalRead(line_2)==0) sensor=0;
     }
   }
 while((digitalRead(line_5)==0)&&(digitalRead(line_1)==1)&&(digitalRead(line_2)==1)) // lech trai nhiều
-{
+{  do_khoang_cach();
     sensor=1;
     while(sensor)
     {
     myservo.write(20); // rẽ phải
+      if(khoangcach<30){
+    moveStop();
+  }
+  else if(khoangcach>=30){
+  moveForward();
+  }
     if(digitalRead(line_4)==0) sensor=0;
     }
 }
 while((digitalRead(line_2)==1)&&(digitalRead(line_1)==1)&&(digitalRead(line_4)==1)&&(digitalRead(line_5)==1))
-{
+{  do_khoang_cach();
   myservo.write(90);
+  if(khoangcach<30){
+    moveStop();
+  }
+  else if(khoangcach>=30){
+  moveForward();
+  }
 }
 
 }
