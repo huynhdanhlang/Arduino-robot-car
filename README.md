@@ -1,5 +1,6 @@
 # Arduino-robot-car
 <a href='https://postimg.cc/nCcvRvcR' target='_blank'><img src='https://i.postimg.cc/nCcvRvcR/IMG-2020-11-25-22-40-15-930.jpg' border='0' alt='IMG-2020-11-25-22-40-15-930'/></a>
+<a href='https://postimg.cc/TLWksJDS' target='_blank'><img src='https://i.postimg.cc/TLWksJDS/IMG-2020-11-30-23-06-05-336.jpg' border='0' alt='IMG-2020-11-30-23-06-05-336'/></a>
 ## Prepare
 - Arudino(Mega, Uno,...)
 - Module L298N motor drive
