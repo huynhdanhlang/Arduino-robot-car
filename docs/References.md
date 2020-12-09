@@ -1,1 +1,3 @@
 - [https://storm-arduino.blogspot.com/2014/10/arduino-robot-made-by-recycling-rc-car.html](https://storm-arduino.blogspot.com/2014/10/arduino-robot-made-by-recycling-rc-car.html)
+- [http://kenhchetac.com/chi-tiet-san-pham/95-robot-do-duong-tranh-vat-can.html](http://kenhchetac.com/chi-tiet-san-pham/95-robot-do-duong-tranh-vat-can.html)
+- [https://obitvn.wordpress.com/2018/08/01/robot-do-line-su-dung-arduino-uno-r3/](https://obitvn.wordpress.com/2018/08/01/robot-do-line-su-dung-arduino-uno-r3/)
